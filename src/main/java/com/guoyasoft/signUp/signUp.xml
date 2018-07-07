@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suit1">
+	<test name="test0" preserve-order="true" enabled="true">
+		<classes>
+			<class name="com.guoyasoft.signUp.SignUpUI">
+				<parameter name="url" value="http://47.98.226.232:8080/guoya-medium/jsp/user/signUp.jsp"></parameter>
+				<methods>
+					<include name="openUrl" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
