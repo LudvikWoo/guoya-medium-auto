@@ -18,7 +18,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class BaseUI {
-	public WebDriver driver;
+	public static WebDriver driver;
 	
 	@BeforeTest
 	public void openChrome(){

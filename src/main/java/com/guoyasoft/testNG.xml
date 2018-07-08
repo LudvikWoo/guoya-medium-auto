@@ -28,6 +28,15 @@
 	</test>
 	<test name="test_query" preserve-order="true" enabled="true">
 		<classes>
+			<class name="com.guoyasoft.login.LoginUI">
+				<parameter name="url"
+					value="http://47.98.226.232:8080/guoya-medium/jsp/user/login.jsp"></parameter>
+				<methods>
+					<include name="openUrl" ></include>
+					<include name="login"></include>
+					<!-- <include name="supperLogin"></include> -->
+				</methods>
+			</class>
 			<class name="com.guoyasoft.queryUser.QueryUser">
 			<parameter name="url"
 					value="http://47.98.226.232:8080/guoya-medium/jsp/user/queryUser.jsp"></parameter>

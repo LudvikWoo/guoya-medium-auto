@@ -17,10 +17,16 @@ import com.guoyasoft.common.BaseUI;
 public class QueryUser extends BaseUI {
 	@Test
 	public void queryUser() {
-		login();
+		signUp();
+		
+//		login();
 
 		query();
+	}
 
+	private void signUp() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void login() {
