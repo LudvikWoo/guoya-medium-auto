@@ -6,6 +6,7 @@
 				<parameter name="url" value="http://47.98.226.232:8080/guoya-medium/jsp/user/signUp.jsp"></parameter>
 				<methods>
 					<include name="openUrl" />
+					<include name="signUp"></include>
 				</methods>
 			</class>
 		</classes>
