@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
@@ -58,8 +60,22 @@ public class BaseUI {
 	}
 	
 	public void text(WebElement element,String text ){
+
+		String readonly = element.getAttribute("readonly");
+		boolean actual = !"readonly".equals(readonly);
+		Assert.assertEquals(actual, true);
+		
 		element.clear();
 		element.sendKeys(text);
+	}
+	
+	public void textDate(String dateName,String text ){
+
+		String js="document.getElementsByName('"+dateName+"')[0].removeAttribute('readOnly');document.getElementsByName('"+dateName+"')[0].setAttribute('value','"+text+"');";
+//		String js="document.getElementsByName('startTime')[0].removeAttribute('readOnly');";
+
+		JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
+        jsDriver.executeScript(js);
 	}
 	
 	public void selectByText(WebElement element,String text){
@@ -79,6 +95,12 @@ public class BaseUI {
 	}
 	
 	public void click(WebElement element){
+		
+		String disabled = element.getAttribute("disabled");
+		System.out.println(disabled);
+		boolean actual = !"disabled".equals(disabled);
+		Assert.assertEquals(actual, true);
+		String a="aaaaaaaaaaa";
 		element.click();
 	}
 	
@@ -99,5 +121,14 @@ public class BaseUI {
 		} finally {
 			System.out.println("screen shot finished");
 		}
+	}
+	
+	public void switchToFrame(String frameIdOrName){
+		driver.switchTo().frame(frameIdOrName);
+	}
+	
+	public void contains(String text){
+		boolean actual=driver.getPageSource().contains(text);
+		Assert.assertEquals(actual, true);
 	}
 }
